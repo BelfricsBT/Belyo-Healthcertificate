@@ -1,0 +1,1813 @@
+2020-09-17T23:23:42+0530 <info> shovel2.js:1 () loading model account.js
+2020-09-17T23:23:42+0530 <debug> orm.js:1 (e.value) sync schema { table: 'accounts',
+  tableFields: 
+   [ { name: 'address',
+       type: 'String',
+       length: 50,
+       primary_key: true,
+       not_null: true },
+     { name: 'str1', type: 'String', length: 256, index: true },
+     { name: 'str2', type: 'String', length: 256 },
+     { name: 'str3', type: 'String', length: 256 },
+     { name: 'str4', type: 'String', length: 256 },
+     { name: 'str5', type: 'String', length: 256 },
+     { name: 'num1', type: 'Number' },
+     { name: 'num2', type: 'Number' },
+     { name: 'num3', type: 'Number' },
+     { name: 'num4', type: 'Number' },
+     { name: 'num5', type: 'Number' },
+     { name: 'bigint1', type: 'BigInt' },
+     { name: 'bigint2', type: 'BigInt' },
+     { name: 'bigint3', type: 'BigInt' },
+     { name: 'bigint4', type: 'BigInt' },
+     { name: 'bigint5', type: 'BigInt' },
+     { name: 'text1', type: 'Text' },
+     { name: 'text2', type: 'Text' },
+     { name: 'text3', type: 'Text' },
+     { name: 'text4', type: 'Text' },
+     { name: 'text5', type: 'Text' } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model balance.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'balances',
+  tableFields: 
+   [ { name: 'address',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'balance', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model block.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'blocks',
+  tableFields: 
+   [ { name: 'id',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'timestamp', type: 'BigInt', not_null: true },
+     { name: 'height', type: 'BigInt', not_null: true, index: true },
+     { name: 'payloadLength', type: 'BigInt', not_null: true },
+     { name: 'payloadHash',
+       type: 'String',
+       length: 64,
+       not_null: true },
+     { name: 'prevBlockId', type: 'String', length: 64 },
+     { name: 'pointId', type: 'String', length: 64 },
+     { name: 'pointHeight', type: 'BigInt' },
+     { name: 'delegate',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       index: true },
+     { name: 'signature', type: 'String', length: 128, not_null: true },
+     { name: 'count', type: 'BigInt', not_null: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model deposit.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'deposits',
+  tableFields: 
+   [ { name: 'tid',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'srcId',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       index: true },
+     { name: 'recipientId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model round-fee.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'round_fees',
+  tableFields: 
+   [ { name: 'round', type: 'Number', not_null: true, index: true },
+     { name: 'currency', type: 'String', length: 30, not_null: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model transaction.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'transactions',
+  tableFields: 
+   [ { name: 'id',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'timestamp', type: 'BigInt', not_null: true, index: true },
+     { name: 'senderId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'senderPublicKey',
+       type: 'String',
+       length: 64,
+       not_null: true },
+     { name: 'fee', type: 'String', length: 50, not_null: true },
+     { name: 'signature', type: 'String', length: 128, not_null: true },
+     { name: 'type', type: 'Number', not_null: true, index: true },
+     { name: 'args', type: 'Text' },
+     { name: 'height', type: 'BigInt', not_null: true, index: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model transfer.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'transfers',
+  tableFields: 
+   [ { name: 'tid',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'senderId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'recipientId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model variable.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { table: 'variables',
+  tableFields: 
+   [ { name: 'key',
+       type: 'String',
+       length: 256,
+       not_null: true,
+       primary_key: true },
+     { name: 'value', type: 'String', length: 256, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model clinic.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { name: 'clinics',
+  fields: 
+   [ { name: 'fName', type: 'String', length: 256, index: true },
+     { name: 'lName', type: 'String', length: 256, index: true },
+     { name: 'clinicName', type: 'String', length: 256, index: true },
+     { name: 'email', type: 'String', length: 256, index: true },
+     { name: 'phoneNo', type: 'Number' },
+     { name: 'dob', type: 'String', length: 256 },
+     { name: 'aadhar', type: 'String', length: 256 },
+     { name: 'addressLine1', type: 'String', length: 256 },
+     { name: 'addressLine2', type: 'String', length: 256 },
+     { name: 'city', type: 'String', length: 256 },
+     { name: 'pinCode', type: 'String', length: 256 },
+     { name: 'state', type: 'String', length: 256 },
+     { name: 'countryCode', type: 'String', length: 2 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'timestamp', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'fName', type: 'String', length: 256, index: true },
+     { name: 'lName', type: 'String', length: 256, index: true },
+     { name: 'clinicName', type: 'String', length: 256, index: true },
+     { name: 'email', type: 'String', length: 256, index: true },
+     { name: 'phoneNo', type: 'Number' },
+     { name: 'dob', type: 'String', length: 256 },
+     { name: 'aadhar', type: 'String', length: 256 },
+     { name: 'addressLine1', type: 'String', length: 256 },
+     { name: 'addressLine2', type: 'String', length: 256 },
+     { name: 'city', type: 'String', length: 256 },
+     { name: 'pinCode', type: 'String', length: 256 },
+     { name: 'state', type: 'String', length: 256 },
+     { name: 'countryCode', type: 'String', length: 2 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'timestamp', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'clinics' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model clinicUser.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { name: 'clinicusers',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'loginEmail', type: 'String', length: 256, index: true },
+     { name: 'userEmail', type: 'String', length: 256, index: true },
+     { name: 'role', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'loginEmail', type: 'String', length: 256, index: true },
+     { name: 'userEmail', type: 'String', length: 256, index: true },
+     { name: 'role', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'clinicusers' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model level.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { name: 'levels',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'issuerEmail', type: 'String', length: 256, index: true },
+     { name: 'authorizer1Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'authorizer2Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'level', type: 'Number', length: 1 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'issuerEmail', type: 'String', length: 256, index: true },
+     { name: 'authorizer1Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'authorizer2Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'level', type: 'Number', length: 1 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'levels' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model specimen.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { name: 'specimens',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizerEmail', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'sampleId', type: 'String', length: 256 },
+     { name: 'specimenType', type: 'String', length: 256 },
+     { name: 'specimenDate', type: 'String', length: 256 },
+     { name: 'resultDate', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'result',
+       type: 'String',
+       length: 25,
+       default: 'Quarantined',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizerEmail', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'sampleId', type: 'String', length: 256 },
+     { name: 'specimenType', type: 'String', length: 256 },
+     { name: 'specimenDate', type: 'String', length: 256 },
+     { name: 'resultDate', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'result',
+       type: 'String',
+       length: 25,
+       default: 'Quarantined',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'specimens' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading model vaccine.js
+2020-09-17T23:23:44+0530 <debug> orm.js:1 (e.value) sync schema { name: 'vaccines',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizer1Email', type: 'String', length: 256 },
+     { name: 'authorizer2Email', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'vaccineName', type: 'String', length: 256 },
+     { name: 'vaccineOn', type: 'String', length: 50 },
+     { name: 'validTillDate', type: 'String', length: 50 },
+     { name: 'vaccinatedBy', type: 'String', length: 256 },
+     { name: 'vaccinatedAt', type: 'String', length: 25 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizer1Email', type: 'String', length: 256 },
+     { name: 'authorizer2Email', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'vaccineName', type: 'String', length: 256 },
+     { name: 'vaccineOn', type: 'String', length: 50 },
+     { name: 'validTillDate', type: 'String', length: 50 },
+     { name: 'vaccinatedBy', type: 'String', length: 256 },
+     { name: 'vaccinatedAt', type: 'String', length: 25 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'vaccines' }
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading contract core.js
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading contract index.js
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading contract clinic.js
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading contract patient.js
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading interface basic.js
+2020-09-17T23:23:44+0530 <info> shovel2.js:1 () loading interface clinic.js
+2020-09-17T23:23:45+0530 <info> shovel2.js:1 () loading interface patient.js
+2020-09-17T23:23:46+0530 <info> shovel2.js:1 () loading interface users.js
+2020-09-17T23:23:46+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "balances"."address", "balances"."currency", "balances"."balance" from "balances" where "balances"."_deleted_" = 0;
+2020-09-17T23:23:46+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "variables"."key", "variables"."value" from "variables" where "variables"."_deleted_" = 0;
+2020-09-17T23:23:46+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "round_fees"."round", "round_fees"."currency", "round_fees"."amount" from "round_fees" where "round_fees"."_deleted_" = 0;
+2020-09-17T23:23:46+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AN1yKK47P3MtD5ZgHYoncGQ1gCn4p2vGAC
+2020-09-17T23:23:46+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AGeeCmSVLDNbtMqqpJchQZakchwzpuje1P
+2020-09-17T23:23:46+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: A7NWaYUkpa543hdTsfw57AoZAgCBr2NFY6
+2020-09-17T23:23:46+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: ABU1G2pQFMGa7c1GiAPYCQuUhiPHdvCSB2
+2020-09-17T23:23:46+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AG1A3ojeLAMZySaZWTkg49jcoVCV7FCKXF
+2020-09-17T23:23:46+0530 <info> index.js:1 (Sandbox.<anonymous>) Initialize complete
+2020-09-17T23:23:46+0530 <info> blocks.js:846 (Function.<anonymous>) app.meta { name: 'belio',
+  description: 'belio project for covid19',
+  tags: '',
+  link: 'https://github.com/rajatkeshar/belio/archive/master.zip',
+  type: 0,
+  category: 1,
+  icon: 'http://o7dyh3w0x.bkt.clouddn.com/hello.png',
+  delegates: 
+   [ 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+     '590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4',
+     'bfe511158d674c3a1e21111223a49770bee93611d998e88a5d2ea3145de2b68b',
+     '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+     '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4' ],
+  unlockDelegates: 3,
+  transactionId: 'd259a68b23ad6ca980275744852b7035fccab7f281836ea42a737c6a11d6b553' }
+2020-09-17T23:23:47+0530 <info> blocks.js:848 (Function.<anonymous>) Blocks found: 666
+2020-09-17T23:23:47+0530 <debug> orm.js:1 (e.<anonymous>) Model#findOne select "blocks"."id", "blocks"."timestamp", "blocks"."height", "blocks"."payloadLength", "blocks"."payloadHash", "blocks"."prevBlockId", "blocks"."pointId", "blocks"."pointHeight", "blocks"."delegate", "blocks"."signature", "blocks"."count" from "blocks" where "blocks"."height" = 666 and "blocks"."_deleted_" = 0; [ [ '65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05',
+    '132885945',
+    '666',
+    '0',
+    'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    'e55743a3c5523758a714e0e310182b2d7ef622855b3c6fae9b1994170fba6d5a',
+    'd7ad1d8699667e82008a48c769277e5d97b3a9be4cee67ea62a8d5645a854005',
+    '80002',
+    '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4',
+    '8a19e570bc0beb89fa7abaec40204df7118cf1ecc278483753d6bd69c23278c8bb4673588e49949d80e64acebab6d6a52d71bac889278f6b64e7d4ba9dc2270b',
+    '0' ] ]
+2020-09-17T23:23:47+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { id: '65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05',
+  timestamp: 132885945,
+  height: 666,
+  payloadLength: 0,
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  prevBlockId: 'e55743a3c5523758a714e0e310182b2d7ef622855b3c6fae9b1994170fba6d5a',
+  pointId: 'd7ad1d8699667e82008a48c769277e5d97b3a9be4cee67ea62a8d5645a854005',
+  pointHeight: 80002,
+  delegate: '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4',
+  signature: '8a19e570bc0beb89fa7abaec40204df7118cf1ecc278483753d6bd69c23278c8bb4673588e49949d80e64acebab6d6a52d71bac889278f6b64e7d4ba9dc2270b',
+  count: 0 }
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface get /contracts
+2020-09-17T23:23:47+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 1 func 
+2020-09-17T23:23:47+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 2 func 
+2020-09-17T23:23:47+0530 <info> api.js:1 (Immediate.<anonymous>) app set ready success
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface get /transfers
+2020-09-17T23:23:47+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80005 }
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /clinic/register
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /clinic/update/clinicmaster
+2020-09-17T23:23:47+0530 <debug> sequence.js:1 (i) Main sequence out 1 func 
+2020-09-17T23:23:47+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /clinic/map/users
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /clinic/update/users/status
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /clinic/update/status/:clinicId
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /clinic/map/auth/levels
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /clinic
+2020-09-17T23:23:47+0530 <debug> sequence.js:1 (i) Main sequence out 2 func 
+2020-09-17T23:23:47+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /clinic/users/:id
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /issuer/initiate/patient/record
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /authorizer/authorized/patient/record
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /issuer/approved/patient/record
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /patient/record/status
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /user
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /user/:token
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /users/login
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /users/role/:roleType
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /users/auth/forgetPassword
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface post /users/auth/resetPassword
+2020-09-17T23:23:47+0530 <info> api.js:1 () register app interface put /users/auth/confirmPassword/:token
+2020-09-17T23:23:50+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"id":"65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05","timestamp":132885945,"height":666,"payloadLength":0,"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","prevBlockId":"e55743a3c5523758a714e0e310182b2d7ef622855b3c6fae9b1994170fba6d5a","pointId":"d7ad1d8699667e82008a48c769277e5d97b3a9be4cee67ea62a8d5645a854005","pointHeight":80002,"delegate":"452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4","signature":"8a19e570bc0beb89fa7abaec40204df7118cf1ecc278483753d6bd69c23278c8bb4673588e49949d80e64acebab6d6a52d71bac889278f6b64e7d4ba9dc2270b","count":0}, event = {"topic":"point","message":{"id":"9dd8bb719b4c638ed24aed765b4d94fe2c6ddf8706478988d03bd3ad05692674","height":80006}}
+2020-09-17T23:23:50+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 3 func 
+2020-09-17T23:23:50+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:23:50+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:23:50+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:23:50+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:23:50+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:23:50+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:23:50+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:23:50+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: '590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4',
+  height: 667,
+  prevBlockId: '65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05',
+  pointId: '9dd8bb719b4c638ed24aed765b4d94fe2c6ddf8706478988d03bd3ad05692674',
+  timestamp: 133307625,
+  pointHeight: 80006,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'c5ac407aec80e8b4e16518d113db52f7cd1823fddf46fc10950744db52ce61f4bddb0b49d20f2fa032b6111df47c3c183b4a533a00b65ecec7b2254656363f06',
+  id: '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 667,
+     id: '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:23:50+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 667
+2020-09-17T23:23:50+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:23:50+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:23:50+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:23:50+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4', 667, '65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05', '9dd8bb719b4c638ed24aed765b4d94fe2c6ddf8706478988d03bd3ad05692674', 133307625, 80006, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, 'c5ac407aec80e8b4e16518d113db52f7cd1823fddf46fc10950744db52ce61f4bddb0b49d20f2fa032b6111df47c3c183b4a533a00b65ecec7b2254656363f06', '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5');
+2020-09-17T23:23:51+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:23:51+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:23:51+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: '590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4',
+  height: 667,
+  prevBlockId: '65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05',
+  pointId: '9dd8bb719b4c638ed24aed765b4d94fe2c6ddf8706478988d03bd3ad05692674',
+  timestamp: 133307625,
+  pointHeight: 80006,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'c5ac407aec80e8b4e16518d113db52f7cd1823fddf46fc10950744db52ce61f4bddb0b49d20f2fa032b6111df47c3c183b4a533a00b65ecec7b2254656363f06',
+  id: '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5' }
+2020-09-17T23:23:51+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: 6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5 height: 667
+2020-09-17T23:23:51+0530 <info> round.js:66 () New dapp block id: 6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5 height: 667 via point: 80006
+2020-09-17T23:23:51+0530 <debug> sequence.js:1 (i) Main sequence out 3 func 
+2020-09-17T23:23:57+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 4 func 
+2020-09-17T23:23:57+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80006 }
+2020-09-17T23:23:57+0530 <debug> sequence.js:1 (i) Main sequence out 4 func 
+2020-09-17T23:23:57+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:23:57+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 5 func 
+2020-09-17T23:23:57+0530 <debug> sequence.js:1 (i) Main sequence out 5 func 
+2020-09-17T23:23:57+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:24:00+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"delegate":"590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4","height":667,"prevBlockId":"65ca992fda2d335ed0a7b0038330072e2a8c9c3628455ba10e0854ff226aea05","pointId":"9dd8bb719b4c638ed24aed765b4d94fe2c6ddf8706478988d03bd3ad05692674","timestamp":133307625,"pointHeight":80006,"count":0,"transactions":[],"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","payloadLength":0,"signature":"c5ac407aec80e8b4e16518d113db52f7cd1823fddf46fc10950744db52ce61f4bddb0b49d20f2fa032b6111df47c3c183b4a533a00b65ecec7b2254656363f06","id":"6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5"}, event = {"topic":"point","message":{"id":"ae42936555840fa33d762504314e741d0ef90bbb1f155b06ce4208457b356365","height":80007}}
+2020-09-17T23:24:00+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 6 func 
+2020-09-17T23:24:00+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:24:00+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:24:00+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:24:00+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:24:00+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:24:00+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:24:00+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:24:00+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+  height: 668,
+  prevBlockId: '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5',
+  pointId: 'ae42936555840fa33d762504314e741d0ef90bbb1f155b06ce4208457b356365',
+  timestamp: 133307640,
+  pointHeight: 80007,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'daa6bca551829af7be9b179a64cebd41271f2abc97e3b66613ea63dcad1f04cf3a54a7a3eeed3a8354a9c5a8f69d6627ab30765e17ba804c8269bb5ad5c5b100',
+  id: 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 668,
+     id: 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:24:00+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 668
+2020-09-17T23:24:00+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:24:00+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:24:00+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:24:00+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00', 668, '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5', 'ae42936555840fa33d762504314e741d0ef90bbb1f155b06ce4208457b356365', 133307640, 80007, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, 'daa6bca551829af7be9b179a64cebd41271f2abc97e3b66613ea63dcad1f04cf3a54a7a3eeed3a8354a9c5a8f69d6627ab30765e17ba804c8269bb5ad5c5b100', 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33');
+2020-09-17T23:24:00+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:24:00+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:24:00+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+  height: 668,
+  prevBlockId: '6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5',
+  pointId: 'ae42936555840fa33d762504314e741d0ef90bbb1f155b06ce4208457b356365',
+  timestamp: 133307640,
+  pointHeight: 80007,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'daa6bca551829af7be9b179a64cebd41271f2abc97e3b66613ea63dcad1f04cf3a54a7a3eeed3a8354a9c5a8f69d6627ab30765e17ba804c8269bb5ad5c5b100',
+  id: 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33' }
+2020-09-17T23:24:00+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33 height: 668
+2020-09-17T23:24:00+0530 <info> round.js:66 () New dapp block id: e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33 height: 668 via point: 80007
+2020-09-17T23:24:00+0530 <debug> sequence.js:1 (i) Main sequence out 6 func 
+2020-09-17T23:24:07+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 7 func 
+2020-09-17T23:24:07+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80007 }
+2020-09-17T23:24:07+0530 <debug> sequence.js:1 (i) Main sequence out 7 func 
+2020-09-17T23:24:07+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:24:07+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 8 func 
+2020-09-17T23:24:07+0530 <debug> sequence.js:1 (i) Main sequence out 8 func 
+2020-09-17T23:24:07+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:24:17+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 9 func 
+2020-09-17T23:24:17+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80007 }
+2020-09-17T23:24:17+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 10 func 
+2020-09-17T23:24:17+0530 <debug> sequence.js:1 (i) Main sequence out 9 func 
+2020-09-17T23:24:17+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:24:17+0530 <debug> sequence.js:1 (i) Main sequence out 10 func 
+2020-09-17T23:24:17+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:24:20+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"delegate":"7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00","height":668,"prevBlockId":"6b25ddbdeee02457b03b0318399910c78053b41ad4c40b1a8d1dc51de4ff58a5","pointId":"ae42936555840fa33d762504314e741d0ef90bbb1f155b06ce4208457b356365","timestamp":133307640,"pointHeight":80007,"count":0,"transactions":[],"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","payloadLength":0,"signature":"daa6bca551829af7be9b179a64cebd41271f2abc97e3b66613ea63dcad1f04cf3a54a7a3eeed3a8354a9c5a8f69d6627ab30765e17ba804c8269bb5ad5c5b100","id":"e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33"}, event = {"topic":"point","message":{"id":"d31c84ab048b9f782fe83c8b94513bc130e73f1edbd41f084caa3adb82e5dc24","height":80008}}
+2020-09-17T23:24:20+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 11 func 
+2020-09-17T23:24:20+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:24:20+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:24:20+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:24:20+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:24:20+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:24:20+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:24:20+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:24:20+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  height: 669,
+  prevBlockId: 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33',
+  pointId: 'd31c84ab048b9f782fe83c8b94513bc130e73f1edbd41f084caa3adb82e5dc24',
+  timestamp: 133307655,
+  pointHeight: 80008,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'f2e1103e9aa5cab75ac8617b3b35d7f25237e84f51cb8a71d97ac703e77ec488815c48ba05c6bad00d1998891c2b956295c2e2452aaf97b371e5447330421203',
+  id: '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 669,
+     id: '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:24:20+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 669
+2020-09-17T23:24:20+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:24:20+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:24:20+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:24:20+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd', 669, 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33', 'd31c84ab048b9f782fe83c8b94513bc130e73f1edbd41f084caa3adb82e5dc24', 133307655, 80008, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, 'f2e1103e9aa5cab75ac8617b3b35d7f25237e84f51cb8a71d97ac703e77ec488815c48ba05c6bad00d1998891c2b956295c2e2452aaf97b371e5447330421203', '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872');
+2020-09-17T23:24:20+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:24:20+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:24:20+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  height: 669,
+  prevBlockId: 'e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33',
+  pointId: 'd31c84ab048b9f782fe83c8b94513bc130e73f1edbd41f084caa3adb82e5dc24',
+  timestamp: 133307655,
+  pointHeight: 80008,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'f2e1103e9aa5cab75ac8617b3b35d7f25237e84f51cb8a71d97ac703e77ec488815c48ba05c6bad00d1998891c2b956295c2e2452aaf97b371e5447330421203',
+  id: '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872' }
+2020-09-17T23:24:20+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: 701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872 height: 669
+2020-09-17T23:24:20+0530 <info> round.js:66 () New dapp block id: 701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872 height: 669 via point: 80008
+2020-09-17T23:24:20+0530 <debug> sequence.js:1 (i) Main sequence out 11 func 
+2020-09-17T23:24:27+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 12 func 
+2020-09-17T23:24:27+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80008 }
+2020-09-17T23:24:27+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 13 func 
+2020-09-17T23:24:27+0530 <debug> sequence.js:1 (i) Main sequence out 12 func 
+2020-09-17T23:24:27+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:24:27+0530 <debug> sequence.js:1 (i) Main sequence out 13 func 
+2020-09-17T23:24:27+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:24:30+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"delegate":"db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd","height":669,"prevBlockId":"e10c49f2f265b138314abd887c83605c2413d58d3bf265e7184d34d776952a33","pointId":"d31c84ab048b9f782fe83c8b94513bc130e73f1edbd41f084caa3adb82e5dc24","timestamp":133307655,"pointHeight":80008,"count":0,"transactions":[],"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","payloadLength":0,"signature":"f2e1103e9aa5cab75ac8617b3b35d7f25237e84f51cb8a71d97ac703e77ec488815c48ba05c6bad00d1998891c2b956295c2e2452aaf97b371e5447330421203","id":"701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872"}, event = {"topic":"point","message":{"id":"c8d9943002d32a88b4a3d44616cbb9b34e02779e61f0063e03863aa47d2bd5c5","height":80009}}
+2020-09-17T23:24:30+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 14 func 
+2020-09-17T23:24:30+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:24:30+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:24:30+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:24:30+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:24:30+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:24:30+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:24:30+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:24:30+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4',
+  height: 670,
+  prevBlockId: '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872',
+  pointId: 'c8d9943002d32a88b4a3d44616cbb9b34e02779e61f0063e03863aa47d2bd5c5',
+  timestamp: 133307670,
+  pointHeight: 80009,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'ba2623b72c320504d5f4cf0e2e025128ba1b37ee2f4309f38e44a8d64470324ca134aefbc46ce77a7e4b77d254f4413476c5d08a22d27268c919291eb738c607',
+  id: 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 670,
+     id: 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:24:30+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 670
+2020-09-17T23:24:30+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:24:30+0530 <debug> blocks.js:363 (Blocks.<anonymous>) ----------------------on round end-----------------------
+2020-09-17T23:24:30+0530 <debug> blocks.js:363 (Blocks.<anonymous>) app.delegate.length 5
+2020-09-17T23:24:30+0530 <debug> fee-pool.js:1 (e.value) fee pool get fees MapIterator {
+  [ 'round:1,currency:BEL',
+  { round: 1, currency: 'BEL', amount: '0' } ],
+  [ 'round:2,currency:BEL',
+  { round: 2, currency: 'BEL', amount: '0' } ],
+  [ 'round:4,currency:BEL',
+  { round: 4, currency: 'BEL', amount: '0' } ],
+  [ 'round:5,currency:BEL',
+  { round: 5, currency: 'BEL', amount: '0' } ],
+  [ 'round:7,currency:BEL',
+  { round: 7, currency: 'BEL', amount: '0' } ],
+  [ 'round:8,currency:BEL',
+  { round: 8, currency: 'BEL', amount: '0' } ],
+  [ 'round:9,currency:BEL',
+  { round: 9, currency: 'BEL', amount: '0' } ],
+  [ 'round:44,currency:BEL',
+  { round: 44, currency: 'BEL', amount: '0' } ],
+  [ 'round:45,currency:BEL',
+  { round: 45, currency: 'BEL', amount: '0' } ],
+  [ 'round:54,currency:BEL',
+  { round: 54, currency: 'BEL', amount: '0' } ],
+  [ 'round:61,currency:BEL',
+  { round: 61, currency: 'BEL', amount: '0' } ],
+  [ 'round:63,currency:BEL',
+  { round: 63, currency: 'BEL', amount: '0' } ],
+  [ 'round:66,currency:BEL',
+  { round: 66, currency: 'BEL', amount: '0' } ],
+  [ 'round:68,currency:BEL',
+  { round: 68, currency: 'BEL', amount: '0' } ],
+  [ 'round:69,currency:BEL',
+  { round: 69, currency: 'BEL', amount: '0' } ],
+  [ 'round:70,currency:BEL',
+  { round: 70, currency: 'BEL', amount: '0' } ],
+  [ 'round:71,currency:BEL',
+  { round: 71, currency: 'BEL', amount: '0' } ],
+  [ 'round:72,currency:BEL',
+  { round: 72, currency: 'BEL', amount: '0' } ],
+  [ 'round:73,currency:BEL',
+  { round: 73, currency: 'BEL', amount: '0' } ],
+  [ 'round:89,currency:BEL',
+  { round: 89, currency: 'BEL', amount: '0' } ],
+  [ 'round:112,currency:BEL',
+  { round: 112, currency: 'BEL', amount: '0' } ],
+  [ 'round:113,currency:BEL',
+  { round: 113, currency: 'BEL', amount: '0' } ],
+  [ 'round:115,currency:BEL',
+  { round: 115, currency: 'BEL', amount: '0' } ],
+  [ 'round:116,currency:BEL',
+  { round: 116, currency: 'BEL', amount: '0' } ] } 134
+2020-09-17T23:24:30+0530 <debug> blocks.js:363 (Blocks.<anonymous>) round fees Map { _c: Map {} }
+2020-09-17T23:24:30+0530 <debug> blocks.js:368 (Blocks.<anonymous>) fees distributes Map { _c: Map {} } Map { _c: Map {} }
+2020-09-17T23:24:30+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:24:30+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:24:30+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4', 670, '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872', 'c8d9943002d32a88b4a3d44616cbb9b34e02779e61f0063e03863aa47d2bd5c5', 133307670, 80009, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, 'ba2623b72c320504d5f4cf0e2e025128ba1b37ee2f4309f38e44a8d64470324ca134aefbc46ce77a7e4b77d254f4413476c5d08a22d27268c919291eb738c607', 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f');
+2020-09-17T23:24:31+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:24:31+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:24:31+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4',
+  height: 670,
+  prevBlockId: '701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872',
+  pointId: 'c8d9943002d32a88b4a3d44616cbb9b34e02779e61f0063e03863aa47d2bd5c5',
+  timestamp: 133307670,
+  pointHeight: 80009,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'ba2623b72c320504d5f4cf0e2e025128ba1b37ee2f4309f38e44a8d64470324ca134aefbc46ce77a7e4b77d254f4413476c5d08a22d27268c919291eb738c607',
+  id: 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f' }
+2020-09-17T23:24:31+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f height: 670
+2020-09-17T23:24:31+0530 <info> round.js:66 () New dapp block id: c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f height: 670 via point: 80009
+2020-09-17T23:24:31+0530 <debug> sequence.js:1 (i) Main sequence out 14 func 
+2020-09-17T23:24:37+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 15 func 
+2020-09-17T23:24:37+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80009 }
+2020-09-17T23:24:37+0530 <debug> sequence.js:1 (i) Main sequence out 15 func 
+2020-09-17T23:24:37+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 16 func 
+2020-09-17T23:24:37+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:24:37+0530 <debug> sequence.js:1 (i) Main sequence out 16 func 
+2020-09-17T23:24:37+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:24:47+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 17 func 
+2020-09-17T23:24:47+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80009 }
+2020-09-17T23:24:47+0530 <debug> sequence.js:1 (i) Main sequence out 17 func 
+2020-09-17T23:24:47+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:24:47+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 18 func 
+2020-09-17T23:24:47+0530 <debug> sequence.js:1 (i) Main sequence out 18 func 
+2020-09-17T23:24:47+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:24:50+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"delegate":"452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4","height":670,"prevBlockId":"701a5832b9714fc4d5f8095e45b462c44d7312e0fbd7aa22347c5a9aede26872","pointId":"c8d9943002d32a88b4a3d44616cbb9b34e02779e61f0063e03863aa47d2bd5c5","timestamp":133307670,"pointHeight":80009,"count":0,"transactions":[],"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","payloadLength":0,"signature":"ba2623b72c320504d5f4cf0e2e025128ba1b37ee2f4309f38e44a8d64470324ca134aefbc46ce77a7e4b77d254f4413476c5d08a22d27268c919291eb738c607","id":"c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f"}, event = {"topic":"point","message":{"id":"2aa83ec636a906703e747be5128183d5591705348198f6d7ccd930f5700c3f91","height":80010}}
+2020-09-17T23:24:50+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 19 func 
+2020-09-17T23:24:50+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:24:50+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:24:50+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:24:50+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:24:50+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:24:50+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:24:50+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:24:50+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+  height: 671,
+  prevBlockId: 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f',
+  pointId: '2aa83ec636a906703e747be5128183d5591705348198f6d7ccd930f5700c3f91',
+  timestamp: 133307685,
+  pointHeight: 80010,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: '5c82d8666491c17a45bd66daf9a4160c776f2c94b6ac9524bfe9d6ebe66fde429a727e0300832e2e3252ddee8248d64dfab7918045cdce5d713c40f446960d0b',
+  id: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 671,
+     id: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:24:50+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 671
+2020-09-17T23:24:50+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:24:50+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:24:50+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:24:50+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00', 671, 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f', '2aa83ec636a906703e747be5128183d5591705348198f6d7ccd930f5700c3f91', 133307685, 80010, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, '5c82d8666491c17a45bd66daf9a4160c776f2c94b6ac9524bfe9d6ebe66fde429a727e0300832e2e3252ddee8248d64dfab7918045cdce5d713c40f446960d0b', '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23');
+2020-09-17T23:24:50+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:24:50+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:24:50+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+  height: 671,
+  prevBlockId: 'c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f',
+  pointId: '2aa83ec636a906703e747be5128183d5591705348198f6d7ccd930f5700c3f91',
+  timestamp: 133307685,
+  pointHeight: 80010,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: '5c82d8666491c17a45bd66daf9a4160c776f2c94b6ac9524bfe9d6ebe66fde429a727e0300832e2e3252ddee8248d64dfab7918045cdce5d713c40f446960d0b',
+  id: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23' }
+2020-09-17T23:24:50+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: 73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23 height: 671
+2020-09-17T23:24:50+0530 <info> round.js:66 () New dapp block id: 73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23 height: 671 via point: 80010
+2020-09-17T23:24:50+0530 <debug> sequence.js:1 (i) Main sequence out 19 func 
+2020-09-17T23:24:57+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 20 func 
+2020-09-17T23:24:57+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80010 }
+2020-09-17T23:24:57+0530 <debug> sequence.js:1 (i) Main sequence out 20 func 
+2020-09-17T23:24:57+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 21 func 
+2020-09-17T23:24:57+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:24:57+0530 <debug> sequence.js:1 (i) Main sequence out 21 func 
+2020-09-17T23:24:57+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:25:00+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"delegate":"7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00","height":671,"prevBlockId":"c7b4269e9fc787361bea8b8ea00d17626a23f312fddab66c8c72240d4c40719f","pointId":"2aa83ec636a906703e747be5128183d5591705348198f6d7ccd930f5700c3f91","timestamp":133307685,"pointHeight":80010,"count":0,"transactions":[],"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","payloadLength":0,"signature":"5c82d8666491c17a45bd66daf9a4160c776f2c94b6ac9524bfe9d6ebe66fde429a727e0300832e2e3252ddee8248d64dfab7918045cdce5d713c40f446960d0b","id":"73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23"}, event = {"topic":"point","message":{"id":"73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a","height":80011}}
+2020-09-17T23:25:00+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 22 func 
+2020-09-17T23:25:00+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:25:00+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:25:00+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:25:00+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:25:00+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:25:00+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:25:00+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:25:00+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  height: 672,
+  prevBlockId: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+  pointId: '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a',
+  timestamp: 133307700,
+  pointHeight: 80011,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f',
+  id: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 672,
+     id: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:25:00+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 672
+2020-09-17T23:25:00+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:25:00+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:25:00+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:25:00+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd', 672, '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23', '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a', 133307700, 80011, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, 'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f', 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d');
+2020-09-17T23:25:00+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:25:00+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:25:00+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  height: 672,
+  prevBlockId: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+  pointId: '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a',
+  timestamp: 133307700,
+  pointHeight: 80011,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: 'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f',
+  id: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d' }
+2020-09-17T23:25:00+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d height: 672
+2020-09-17T23:25:00+0530 <info> round.js:66 () New dapp block id: ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d height: 672 via point: 80011
+2020-09-17T23:25:00+0530 <debug> sequence.js:1 (i) Main sequence out 22 func 
+2020-09-17T23:25:07+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 23 func 
+2020-09-17T23:25:07+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80011 }
+2020-09-17T23:25:07+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 24 func 
+2020-09-17T23:25:07+0530 <debug> sequence.js:1 (i) Main sequence out 23 func 
+2020-09-17T23:25:07+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:25:07+0530 <debug> sequence.js:1 (i) Main sequence out 24 func 
+2020-09-17T23:25:07+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model account.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'accounts',
+  tableFields: 
+   [ { name: 'address',
+       type: 'String',
+       length: 50,
+       primary_key: true,
+       not_null: true },
+     { name: 'str1', type: 'String', length: 256, index: true },
+     { name: 'str2', type: 'String', length: 256 },
+     { name: 'str3', type: 'String', length: 256 },
+     { name: 'str4', type: 'String', length: 256 },
+     { name: 'str5', type: 'String', length: 256 },
+     { name: 'num1', type: 'Number' },
+     { name: 'num2', type: 'Number' },
+     { name: 'num3', type: 'Number' },
+     { name: 'num4', type: 'Number' },
+     { name: 'num5', type: 'Number' },
+     { name: 'bigint1', type: 'BigInt' },
+     { name: 'bigint2', type: 'BigInt' },
+     { name: 'bigint3', type: 'BigInt' },
+     { name: 'bigint4', type: 'BigInt' },
+     { name: 'bigint5', type: 'BigInt' },
+     { name: 'text1', type: 'Text' },
+     { name: 'text2', type: 'Text' },
+     { name: 'text3', type: 'Text' },
+     { name: 'text4', type: 'Text' },
+     { name: 'text5', type: 'Text' } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model balance.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'balances',
+  tableFields: 
+   [ { name: 'address',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'balance', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model block.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'blocks',
+  tableFields: 
+   [ { name: 'id',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'timestamp', type: 'BigInt', not_null: true },
+     { name: 'height', type: 'BigInt', not_null: true, index: true },
+     { name: 'payloadLength', type: 'BigInt', not_null: true },
+     { name: 'payloadHash',
+       type: 'String',
+       length: 64,
+       not_null: true },
+     { name: 'prevBlockId', type: 'String', length: 64 },
+     { name: 'pointId', type: 'String', length: 64 },
+     { name: 'pointHeight', type: 'BigInt' },
+     { name: 'delegate',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       index: true },
+     { name: 'signature', type: 'String', length: 128, not_null: true },
+     { name: 'count', type: 'BigInt', not_null: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model deposit.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'deposits',
+  tableFields: 
+   [ { name: 'tid',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'srcId',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       index: true },
+     { name: 'recipientId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model round-fee.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'round_fees',
+  tableFields: 
+   [ { name: 'round', type: 'Number', not_null: true, index: true },
+     { name: 'currency', type: 'String', length: 30, not_null: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model transaction.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'transactions',
+  tableFields: 
+   [ { name: 'id',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'timestamp', type: 'BigInt', not_null: true, index: true },
+     { name: 'senderId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'senderPublicKey',
+       type: 'String',
+       length: 64,
+       not_null: true },
+     { name: 'fee', type: 'String', length: 50, not_null: true },
+     { name: 'signature', type: 'String', length: 128, not_null: true },
+     { name: 'type', type: 'Number', not_null: true, index: true },
+     { name: 'args', type: 'Text' },
+     { name: 'height', type: 'BigInt', not_null: true, index: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model transfer.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'transfers',
+  tableFields: 
+   [ { name: 'tid',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'senderId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'recipientId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model variable.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { table: 'variables',
+  tableFields: 
+   [ { name: 'key',
+       type: 'String',
+       length: 256,
+       not_null: true,
+       primary_key: true },
+     { name: 'value', type: 'String', length: 256, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model clinic.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { name: 'clinics',
+  fields: 
+   [ { name: 'fName', type: 'String', length: 256, index: true },
+     { name: 'lName', type: 'String', length: 256, index: true },
+     { name: 'clinicName', type: 'String', length: 256, index: true },
+     { name: 'email', type: 'String', length: 256, index: true },
+     { name: 'phoneNo', type: 'Number' },
+     { name: 'dob', type: 'String', length: 256 },
+     { name: 'aadhar', type: 'String', length: 256 },
+     { name: 'addressLine1', type: 'String', length: 256 },
+     { name: 'addressLine2', type: 'String', length: 256 },
+     { name: 'city', type: 'String', length: 256 },
+     { name: 'pinCode', type: 'String', length: 256 },
+     { name: 'state', type: 'String', length: 256 },
+     { name: 'countryCode', type: 'String', length: 2 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'timestamp', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'fName', type: 'String', length: 256, index: true },
+     { name: 'lName', type: 'String', length: 256, index: true },
+     { name: 'clinicName', type: 'String', length: 256, index: true },
+     { name: 'email', type: 'String', length: 256, index: true },
+     { name: 'phoneNo', type: 'Number' },
+     { name: 'dob', type: 'String', length: 256 },
+     { name: 'aadhar', type: 'String', length: 256 },
+     { name: 'addressLine1', type: 'String', length: 256 },
+     { name: 'addressLine2', type: 'String', length: 256 },
+     { name: 'city', type: 'String', length: 256 },
+     { name: 'pinCode', type: 'String', length: 256 },
+     { name: 'state', type: 'String', length: 256 },
+     { name: 'countryCode', type: 'String', length: 2 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'timestamp', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'clinics' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model clinicUser.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { name: 'clinicusers',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'loginEmail', type: 'String', length: 256, index: true },
+     { name: 'userEmail', type: 'String', length: 256, index: true },
+     { name: 'role', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'loginEmail', type: 'String', length: 256, index: true },
+     { name: 'userEmail', type: 'String', length: 256, index: true },
+     { name: 'role', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'clinicusers' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model level.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { name: 'levels',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'issuerEmail', type: 'String', length: 256, index: true },
+     { name: 'authorizer1Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'authorizer2Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'level', type: 'Number', length: 1 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'issuerEmail', type: 'String', length: 256, index: true },
+     { name: 'authorizer1Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'authorizer2Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'level', type: 'Number', length: 1 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'levels' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model specimen.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { name: 'specimens',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizerEmail', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'sampleId', type: 'String', length: 256 },
+     { name: 'specimenType', type: 'String', length: 256 },
+     { name: 'specimenDate', type: 'String', length: 256 },
+     { name: 'resultDate', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'result',
+       type: 'String',
+       length: 25,
+       default: 'Quarantined',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizerEmail', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'sampleId', type: 'String', length: 256 },
+     { name: 'specimenType', type: 'String', length: 256 },
+     { name: 'specimenDate', type: 'String', length: 256 },
+     { name: 'resultDate', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'result',
+       type: 'String',
+       length: 25,
+       default: 'Quarantined',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'specimens' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading model vaccine.js
+2020-09-17T23:25:39+0530 <debug> orm.js:1 (e.value) sync schema { name: 'vaccines',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizer1Email', type: 'String', length: 256 },
+     { name: 'authorizer2Email', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'vaccineName', type: 'String', length: 256 },
+     { name: 'vaccineOn', type: 'String', length: 50 },
+     { name: 'validTillDate', type: 'String', length: 50 },
+     { name: 'vaccinatedBy', type: 'String', length: 256 },
+     { name: 'vaccinatedAt', type: 'String', length: 25 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizer1Email', type: 'String', length: 256 },
+     { name: 'authorizer2Email', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'vaccineName', type: 'String', length: 256 },
+     { name: 'vaccineOn', type: 'String', length: 50 },
+     { name: 'validTillDate', type: 'String', length: 50 },
+     { name: 'vaccinatedBy', type: 'String', length: 256 },
+     { name: 'vaccinatedAt', type: 'String', length: 25 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'vaccines' }
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading contract core.js
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading contract index.js
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading contract clinic.js
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading contract patient.js
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading interface basic.js
+2020-09-17T23:25:39+0530 <info> shovel2.js:1 () loading interface clinic.js
+2020-09-17T23:25:40+0530 <info> shovel2.js:1 () loading interface patient.js
+2020-09-17T23:25:40+0530 <info> shovel2.js:1 () loading interface users.js
+2020-09-17T23:25:40+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "balances"."address", "balances"."currency", "balances"."balance" from "balances" where "balances"."_deleted_" = 0;
+2020-09-17T23:25:40+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "variables"."key", "variables"."value" from "variables" where "variables"."_deleted_" = 0;
+2020-09-17T23:25:40+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "round_fees"."round", "round_fees"."currency", "round_fees"."amount" from "round_fees" where "round_fees"."_deleted_" = 0;
+2020-09-17T23:25:40+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AN1yKK47P3MtD5ZgHYoncGQ1gCn4p2vGAC
+2020-09-17T23:25:40+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AGeeCmSVLDNbtMqqpJchQZakchwzpuje1P
+2020-09-17T23:25:40+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: A7NWaYUkpa543hdTsfw57AoZAgCBr2NFY6
+2020-09-17T23:25:40+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: ABU1G2pQFMGa7c1GiAPYCQuUhiPHdvCSB2
+2020-09-17T23:25:40+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AG1A3ojeLAMZySaZWTkg49jcoVCV7FCKXF
+2020-09-17T23:25:40+0530 <info> index.js:1 (Sandbox.<anonymous>) Initialize complete
+2020-09-17T23:25:40+0530 <info> blocks.js:846 (Function.<anonymous>) app.meta { name: 'belio',
+  description: 'belio project for covid19',
+  tags: '',
+  link: 'https://github.com/rajatkeshar/belio/archive/master.zip',
+  type: 0,
+  category: 1,
+  icon: 'http://o7dyh3w0x.bkt.clouddn.com/hello.png',
+  delegates: 
+   [ 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+     '590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4',
+     'bfe511158d674c3a1e21111223a49770bee93611d998e88a5d2ea3145de2b68b',
+     '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+     '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4' ],
+  unlockDelegates: 3,
+  transactionId: 'd259a68b23ad6ca980275744852b7035fccab7f281836ea42a737c6a11d6b553' }
+2020-09-17T23:25:40+0530 <info> blocks.js:848 (Function.<anonymous>) Blocks found: 672
+2020-09-17T23:25:40+0530 <debug> orm.js:1 (e.<anonymous>) Model#findOne select "blocks"."id", "blocks"."timestamp", "blocks"."height", "blocks"."payloadLength", "blocks"."payloadHash", "blocks"."prevBlockId", "blocks"."pointId", "blocks"."pointHeight", "blocks"."delegate", "blocks"."signature", "blocks"."count" from "blocks" where "blocks"."height" = 672 and "blocks"."_deleted_" = 0; [ [ 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+    '133307700',
+    '672',
+    '0',
+    'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+    '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a',
+    '80011',
+    'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+    'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f',
+    '0' ] ]
+2020-09-17T23:25:40+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { id: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+  timestamp: 133307700,
+  height: 672,
+  payloadLength: 0,
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  prevBlockId: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+  pointId: '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a',
+  pointHeight: 80011,
+  delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  signature: 'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f',
+  count: 0 }
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface get /contracts
+2020-09-17T23:25:40+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 1 func 
+2020-09-17T23:25:40+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 2 func 
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface get /transfers
+2020-09-17T23:25:40+0530 <info> api.js:1 (Immediate.<anonymous>) app set ready success
+2020-09-17T23:25:40+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80012 }
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /clinic/register
+2020-09-17T23:25:40+0530 <debug> sequence.js:1 (i) Main sequence out 1 func 
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /clinic/update/clinicmaster
+2020-09-17T23:25:40+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /clinic/map/users
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /clinic/update/users/status
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /clinic/update/status/:clinicId
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /clinic/map/auth/levels
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /clinic
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /clinic/users/:id
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /issuer/initiate/patient/record
+2020-09-17T23:25:40+0530 <debug> sequence.js:1 (i) Main sequence out 2 func 
+2020-09-17T23:25:40+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /authorizer/authorized/patient/record
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /issuer/approved/patient/record
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /patient/record/status
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /user
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /user/:token
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /users/login
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /users/role/:roleType
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /users/auth/forgetPassword
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface post /users/auth/resetPassword
+2020-09-17T23:25:40+0530 <info> api.js:1 () register app interface put /users/auth/confirmPassword/:token
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model account.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'accounts',
+  tableFields: 
+   [ { name: 'address',
+       type: 'String',
+       length: 50,
+       primary_key: true,
+       not_null: true },
+     { name: 'str1', type: 'String', length: 256, index: true },
+     { name: 'str2', type: 'String', length: 256 },
+     { name: 'str3', type: 'String', length: 256 },
+     { name: 'str4', type: 'String', length: 256 },
+     { name: 'str5', type: 'String', length: 256 },
+     { name: 'num1', type: 'Number' },
+     { name: 'num2', type: 'Number' },
+     { name: 'num3', type: 'Number' },
+     { name: 'num4', type: 'Number' },
+     { name: 'num5', type: 'Number' },
+     { name: 'bigint1', type: 'BigInt' },
+     { name: 'bigint2', type: 'BigInt' },
+     { name: 'bigint3', type: 'BigInt' },
+     { name: 'bigint4', type: 'BigInt' },
+     { name: 'bigint5', type: 'BigInt' },
+     { name: 'text1', type: 'Text' },
+     { name: 'text2', type: 'Text' },
+     { name: 'text3', type: 'Text' },
+     { name: 'text4', type: 'Text' },
+     { name: 'text5', type: 'Text' } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model balance.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'balances',
+  tableFields: 
+   [ { name: 'address',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'balance', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model block.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'blocks',
+  tableFields: 
+   [ { name: 'id',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'timestamp', type: 'BigInt', not_null: true },
+     { name: 'height', type: 'BigInt', not_null: true, index: true },
+     { name: 'payloadLength', type: 'BigInt', not_null: true },
+     { name: 'payloadHash',
+       type: 'String',
+       length: 64,
+       not_null: true },
+     { name: 'prevBlockId', type: 'String', length: 64 },
+     { name: 'pointId', type: 'String', length: 64 },
+     { name: 'pointHeight', type: 'BigInt' },
+     { name: 'delegate',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       index: true },
+     { name: 'signature', type: 'String', length: 128, not_null: true },
+     { name: 'count', type: 'BigInt', not_null: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model deposit.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'deposits',
+  tableFields: 
+   [ { name: 'tid',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'srcId',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       index: true },
+     { name: 'recipientId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model round-fee.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'round_fees',
+  tableFields: 
+   [ { name: 'round', type: 'Number', not_null: true, index: true },
+     { name: 'currency', type: 'String', length: 30, not_null: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model transaction.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'transactions',
+  tableFields: 
+   [ { name: 'id',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'timestamp', type: 'BigInt', not_null: true, index: true },
+     { name: 'senderId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'senderPublicKey',
+       type: 'String',
+       length: 64,
+       not_null: true },
+     { name: 'fee', type: 'String', length: 50, not_null: true },
+     { name: 'signature', type: 'String', length: 128, not_null: true },
+     { name: 'type', type: 'Number', not_null: true, index: true },
+     { name: 'args', type: 'Text' },
+     { name: 'height', type: 'BigInt', not_null: true, index: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model transfer.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'transfers',
+  tableFields: 
+   [ { name: 'tid',
+       type: 'String',
+       length: 64,
+       not_null: true,
+       unique: true,
+       primary_key: true },
+     { name: 'senderId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'recipientId',
+       type: 'String',
+       length: 50,
+       not_null: true,
+       index: true },
+     { name: 'currency',
+       type: 'String',
+       length: 30,
+       not_null: true,
+       index: true },
+     { name: 'amount', type: 'String', length: 50, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model variable.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { table: 'variables',
+  tableFields: 
+   [ { name: 'key',
+       type: 'String',
+       length: 256,
+       not_null: true,
+       primary_key: true },
+     { name: 'value', type: 'String', length: 256, not_null: true } ],
+  type: 'create' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model clinic.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { name: 'clinics',
+  fields: 
+   [ { name: 'fName', type: 'String', length: 256, index: true },
+     { name: 'lName', type: 'String', length: 256, index: true },
+     { name: 'clinicName', type: 'String', length: 256, index: true },
+     { name: 'email', type: 'String', length: 256, index: true },
+     { name: 'phoneNo', type: 'Number' },
+     { name: 'dob', type: 'String', length: 256 },
+     { name: 'aadhar', type: 'String', length: 256 },
+     { name: 'addressLine1', type: 'String', length: 256 },
+     { name: 'addressLine2', type: 'String', length: 256 },
+     { name: 'city', type: 'String', length: 256 },
+     { name: 'pinCode', type: 'String', length: 256 },
+     { name: 'state', type: 'String', length: 256 },
+     { name: 'countryCode', type: 'String', length: 2 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'timestamp', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'fName', type: 'String', length: 256, index: true },
+     { name: 'lName', type: 'String', length: 256, index: true },
+     { name: 'clinicName', type: 'String', length: 256, index: true },
+     { name: 'email', type: 'String', length: 256, index: true },
+     { name: 'phoneNo', type: 'Number' },
+     { name: 'dob', type: 'String', length: 256 },
+     { name: 'aadhar', type: 'String', length: 256 },
+     { name: 'addressLine1', type: 'String', length: 256 },
+     { name: 'addressLine2', type: 'String', length: 256 },
+     { name: 'city', type: 'String', length: 256 },
+     { name: 'pinCode', type: 'String', length: 256 },
+     { name: 'state', type: 'String', length: 256 },
+     { name: 'countryCode', type: 'String', length: 2 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'timestamp', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'clinics' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model clinicUser.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { name: 'clinicusers',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'loginEmail', type: 'String', length: 256, index: true },
+     { name: 'userEmail', type: 'String', length: 256, index: true },
+     { name: 'role', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'loginEmail', type: 'String', length: 256, index: true },
+     { name: 'userEmail', type: 'String', length: 256, index: true },
+     { name: 'role', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'active',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'clinicusers' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model level.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { name: 'levels',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'issuerEmail', type: 'String', length: 256, index: true },
+     { name: 'authorizer1Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'authorizer2Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'level', type: 'Number', length: 1 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'issuerEmail', type: 'String', length: 256, index: true },
+     { name: 'authorizer1Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'authorizer2Email',
+       type: 'String',
+       length: 256,
+       index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'level', type: 'Number', length: 1 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'levels' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model specimen.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { name: 'specimens',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizerEmail', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'sampleId', type: 'String', length: 256 },
+     { name: 'specimenType', type: 'String', length: 256 },
+     { name: 'specimenDate', type: 'String', length: 256 },
+     { name: 'resultDate', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'result',
+       type: 'String',
+       length: 25,
+       default: 'Quarantined',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizerEmail', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'sampleId', type: 'String', length: 256 },
+     { name: 'specimenType', type: 'String', length: 256 },
+     { name: 'specimenDate', type: 'String', length: 256 },
+     { name: 'resultDate', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'result',
+       type: 'String',
+       length: 25,
+       default: 'Quarantined',
+       enum: [Array] },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'specimens' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading model vaccine.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.value) sync schema { name: 'vaccines',
+  fields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizer1Email', type: 'String', length: 256 },
+     { name: 'authorizer2Email', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'vaccineName', type: 'String', length: 256 },
+     { name: 'vaccineOn', type: 'String', length: 50 },
+     { name: 'validTillDate', type: 'String', length: 50 },
+     { name: 'vaccinatedBy', type: 'String', length: 256 },
+     { name: 'vaccinatedAt', type: 'String', length: 25 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  type: 'create',
+  tableFields: 
+   [ { name: 'clinicId', type: 'String', length: 256, index: true },
+     { name: 'certificateType', type: 'String', length: 25 },
+     { name: 'issuerEmail', type: 'String', length: 256 },
+     { name: 'authorizer1Email', type: 'String', length: 256 },
+     { name: 'authorizer2Email', type: 'String', length: 256 },
+     { name: 'patientEmail', type: 'String', length: 256 },
+     { name: 'status',
+       type: 'String',
+       length: 25,
+       default: 'pending',
+       enum: [Array] },
+     { name: 'vaccineName', type: 'String', length: 256 },
+     { name: 'vaccineOn', type: 'String', length: 50 },
+     { name: 'validTillDate', type: 'String', length: 50 },
+     { name: 'vaccinatedBy', type: 'String', length: 256 },
+     { name: 'vaccinatedAt', type: 'String', length: 25 },
+     { name: 'cOn', type: 'Number' },
+     { name: 'mOn', type: 'Number' },
+     { name: 'transactionId', length: 256, type: 'String' } ],
+  table: 'vaccines' }
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading contract core.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading contract index.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading contract clinic.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading contract patient.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading interface basic.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading interface clinic.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading interface patient.js
+2020-09-17T23:27:21+0530 <info> shovel2.js:1 () loading interface users.js
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "balances"."address", "balances"."currency", "balances"."balance" from "balances" where "balances"."_deleted_" = 0;
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "variables"."key", "variables"."value" from "variables" where "variables"."_deleted_" = 0;
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "round_fees"."round", "round_fees"."currency", "round_fees"."amount" from "round_fees" where "round_fees"."_deleted_" = 0;
+2020-09-17T23:27:21+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AN1yKK47P3MtD5ZgHYoncGQ1gCn4p2vGAC
+2020-09-17T23:27:21+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AGeeCmSVLDNbtMqqpJchQZakchwzpuje1P
+2020-09-17T23:27:21+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: A7NWaYUkpa543hdTsfw57AoZAgCBr2NFY6
+2020-09-17T23:27:21+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: ABU1G2pQFMGa7c1GiAPYCQuUhiPHdvCSB2
+2020-09-17T23:27:21+0530 <info> round.js:319 (Function.Round.onBind) Forging enable on account: AG1A3ojeLAMZySaZWTkg49jcoVCV7FCKXF
+2020-09-17T23:27:21+0530 <info> index.js:1 (Sandbox.<anonymous>) Initialize complete
+2020-09-17T23:27:21+0530 <info> blocks.js:846 (Function.<anonymous>) app.meta { name: 'belio',
+  description: 'belio project for covid19',
+  tags: '',
+  link: 'https://github.com/rajatkeshar/belio/archive/master.zip',
+  type: 0,
+  category: 1,
+  icon: 'http://o7dyh3w0x.bkt.clouddn.com/hello.png',
+  delegates: 
+   [ 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+     '590e28d2964b0aa4d7c7b98faee4676d467606c6761f7f41f99c52bb4813b5e4',
+     'bfe511158d674c3a1e21111223a49770bee93611d998e88a5d2ea3145de2b68b',
+     '7bbf62931cf3c596591a580212631aff51d6bc0577c54769953caadb23f6ab00',
+     '452df9213aedb3b9fed6db3e2ea9f49d3db226e2dac01828bc3dcd73b7a953b4' ],
+  unlockDelegates: 3,
+  transactionId: 'd259a68b23ad6ca980275744852b7035fccab7f281836ea42a737c6a11d6b553' }
+2020-09-17T23:27:21+0530 <info> blocks.js:848 (Function.<anonymous>) Blocks found: 672
+2020-09-17T23:27:21+0530 <debug> orm.js:1 (e.<anonymous>) Model#findOne select "blocks"."id", "blocks"."timestamp", "blocks"."height", "blocks"."payloadLength", "blocks"."payloadHash", "blocks"."prevBlockId", "blocks"."pointId", "blocks"."pointHeight", "blocks"."delegate", "blocks"."signature", "blocks"."count" from "blocks" where "blocks"."height" = 672 and "blocks"."_deleted_" = 0; [ [ 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+    '133307700',
+    '672',
+    '0',
+    'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+    '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a',
+    '80011',
+    'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+    'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f',
+    '0' ] ]
+2020-09-17T23:27:21+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { id: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+  timestamp: 133307700,
+  height: 672,
+  payloadLength: 0,
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  prevBlockId: '73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23',
+  pointId: '73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a',
+  pointHeight: 80011,
+  delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  signature: 'f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f',
+  count: 0 }
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface get /contracts
+2020-09-17T23:27:21+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 1 func 
+2020-09-17T23:27:21+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 2 func 
+2020-09-17T23:27:21+0530 <info> api.js:1 (Immediate.<anonymous>) app set ready success
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface get /transfers
+2020-09-17T23:27:21+0530 <info> sync.js:1 (Immediate.<anonymous>) get main block height { height: 80013 }
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /clinic/register
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /clinic/update/clinicmaster
+2020-09-17T23:27:21+0530 <debug> sequence.js:1 (i) Main sequence out 1 func 
+2020-09-17T23:27:21+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#blockSync timer Failed to get blocks height: No peers in db
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /clinic/map/users
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /clinic/update/users/status
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /clinic/update/status/:clinicId
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /clinic/map/auth/levels
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /clinic
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /clinic/users/:id
+2020-09-17T23:27:21+0530 <debug> sequence.js:1 (i) Main sequence out 2 func 
+2020-09-17T23:27:21+0530 <error> sync.js:1 (Immediate.<anonymous>) Sync#transactionsSync timer No peers in db
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /issuer/initiate/patient/record
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /authorizer/authorized/patient/record
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /issuer/approved/patient/record
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /patient/record/status
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /user
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /user/:token
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /users/login
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /users/role/:roleType
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /users/auth/forgetPassword
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface post /users/auth/resetPassword
+2020-09-17T23:27:21+0530 <info> api.js:1 () register app interface put /users/auth/confirmPassword/:token
+2020-09-17T23:27:30+0530 <debug> blocks.js:742 (Function.Blocks.onMessage) Blocks#onMessage last block = {"id":"ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d","timestamp":133307700,"height":672,"payloadLength":0,"payloadHash":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","prevBlockId":"73baf173bfdb5263f82084553a0f987375d29c42c56739a3a840547eccb62b23","pointId":"73accc4bbd632e3c16376b29071c05efc7f118195692e9a5f595c502288d4d7a","pointHeight":80011,"delegate":"db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd","signature":"f99296801809617f242fad13b3bfdcfa3e8a72ba5677eccf840d64c9266d3ef24f69f921496198a6218f92f8746fcd6384c3b6f45a2006c1fae71b19031a7e0f","count":0}, event = {"topic":"point","message":{"id":"fcad0cf3383a7e2b4be0767d23214abe2350d21be2d933f3d350fbd88d9c9397","height":80014}}
+2020-09-17T23:27:30+0530 <debug> sequence.js:1 (Sequence.add) Main sequence in 3 func 
+2020-09-17T23:27:30+0530 <trace> round.js:89 (Object.<anonymous>) enter balanceSync ------------------------
+2020-09-17T23:27:30+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."args" from "transactions" where "transactions"."type" = 1 and "transactions"."_deleted_" = 0 order by "transactions"."height" desc limit 1;
+2020-09-17T23:27:30+0530 <debug> round.js:100 (Object.<anonymous>) balanceSync found deposit transactions: []
+2020-09-17T23:27:30+0530 <debug> round.js:185 (Object.<anonymous>) get last withdrawal id {}
+2020-09-17T23:27:30+0530 <debug> orm.js:1 (e.<anonymous>) Model#findAll select "transactions"."id", "transactions"."senderPublicKey", "transactions"."height", "transactions"."args" from "transactions" where "transactions"."height" > 0 and "transactions"."type" = 2 and "transactions"."_deleted_" = 0 order by "transactions"."height" asc;
+2020-09-17T23:27:30+0530 <debug> round.js:211 (Object.<anonymous>) found inner withdrawal transactions []
+2020-09-17T23:27:30+0530 <info> blocks.js:486 (Blocks.<anonymous>) Get active delegate keypairs len: 5
+2020-09-17T23:27:30+0530 <debug> blocks.js:276 (Blocks.<anonymous>) processBlock block and options { delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  height: 673,
+  prevBlockId: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+  pointId: 'fcad0cf3383a7e2b4be0767d23214abe2350d21be2d933f3d350fbd88d9c9397',
+  timestamp: 133307850,
+  pointHeight: 80014,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: '67ebb405cef673cb86191e4327566baa05339d9b35ef399818e4961e0b743a8a286260bc76b04e6d6c005ce373a2f394e9bd393089b9634049f1a6220262750f',
+  id: '39a4b3a79ba48358412f03aea1f2c5dc17eb4947c796db6b201d53fc86c1e154' } { local: true,
+  broadcast: true,
+  votes: 
+   { height: 673,
+     id: '39a4b3a79ba48358412f03aea1f2c5dc17eb4947c796db6b201d53fc86c1e154',
+     signatures: [ [Object], [Object], [Object], [Object], [Object] ] } }
+2020-09-17T23:27:30+0530 <trace> blocks.js:412 (Blocks.saveBlock) Blocks#save height 673
+2020-09-17T23:27:30+0530 <trace> blocks.js:418 (Blocks.saveBlock) Blocks#save end
+2020-09-17T23:27:30+0530 <trace> smartdb.js:1 (e.<anonymous>) enter commitBlock
+2020-09-17T23:27:30+0530 <debug> smartdb.js:1 (e.<anonymous>) sql batchs size 1
+2020-09-17T23:27:30+0530 <debug> smartdb.js:1 (e.<anonymous>) execute sql: insert into "blocks" ("delegate", "height", "prevBlockId", "pointId", "timestamp", "pointHeight", "count", "payloadHash", "payloadLength", "signature", "id") values ('db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd', 673, 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d', 'fcad0cf3383a7e2b4be0767d23214abe2350d21be2d933f3d350fbd88d9c9397', 133307850, 80014, 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 0, '67ebb405cef673cb86191e4327566baa05339d9b35ef399818e4961e0b743a8a286260bc76b04e6d6c005ce373a2f394e9bd393089b9634049f1a6220262750f', '39a4b3a79ba48358412f03aea1f2c5dc17eb4947c796db6b201d53fc86c1e154');
+2020-09-17T23:27:30+0530 <trace> smartdb.js:1 (e.<anonymous>) after commit transaction
+2020-09-17T23:27:30+0530 <info> blocks.js:334 (Blocks.<anonymous>) Block applied correctly with 0 transactions
+2020-09-17T23:27:30+0530 <trace> blocks.js:386 (Blocks.setLastBlock) Blocks#setLastBlock { delegate: 'db18d5799944030f76b6ce0879b1ca4b0c2c1cee51f53ce9b43f78259950c2fd',
+  height: 673,
+  prevBlockId: 'ac58702e22905c340d2d182e39e7f19072f14253e1b1182dde7c9327f2b83b7d',
+  pointId: 'fcad0cf3383a7e2b4be0767d23214abe2350d21be2d933f3d350fbd88d9c9397',
+  timestamp: 133307850,
+  pointHeight: 80014,
+  count: 0,
+  transactions: [],
+  payloadHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  payloadLength: 0,
+  signature: '67ebb405cef673cb86191e4327566baa05339d9b35ef399818e4961e0b743a8a286260bc76b04e6d6c005ce373a2f394e9bd393089b9634049f1a6220262750f',
+  id: '39a4b3a79ba48358412f03aea1f2c5dc17eb4947c796db6b201d53fc86c1e154' }
+2020-09-17T23:27:30+0530 <info> blocks.js:496 (Blocks.<anonymous>) Forged new block id: 39a4b3a79ba48358412f03aea1f2c5dc17eb4947c796db6b201d53fc86c1e154 height: 673
+2020-09-17T23:27:30+0530 <info> round.js:66 () New dapp block id: 39a4b3a79ba48358412f03aea1f2c5dc17eb4947c796db6b201d53fc86c1e154 height: 673 via point: 80014
+2020-09-17T23:27:30+0530 <debug> sequence.js:1 (i) Main sequence out 3 func 
